@@ -203,12 +203,12 @@
                   <img src="https://i.ibb.co/C5SB6zj4/Identidad-UPN-25-vertical-azul-fondo-blanco.png" alt="UPN Logo" className="h-24 mx-auto mb-4" />
                 </div>
 
-                <h1 className="text-4xl font-black text-slate-900 mb-3 leading-tight">
-                  Sistema de Información para la <br />
-                  <span className="text-blue-600">Gestión de Salidas de Campo</span>
+                <h1 className="text-3xl sm:text-4xl font-black text-slate-900 mb-3 leading-tight text-balance">
+                  Sistema de Información para la <br className="hidden sm:block" />
+                  <span className="text-blue-600 block sm:inline">Gestión de Salidas de Campo</span>
                 </h1>
 
-                <h2 className="text-xl font-bold text-slate-600 mb-8">
+                <h2 className="text-lg sm:text-xl font-bold text-slate-600 mb-6 sm:mb-8 text-balance">
                   Universidad Pedagógica Nacional
                 </h2>
 
@@ -262,10 +262,10 @@
                 {[
                   { title: "Procesos Manuales", desc: "Gestión fragmentada" },
                   { title: "Baja Trazabilidad", desc: "Escaso seguimiento" },
-                  { title: "Sobrecarga Docente", desc: "Carga administrativa excesiva" },
-                  { title: "Riesgo Normativo", desc: "Cumplimiento vulnerable" }
+                  { title: "Sobrecarga Docente", desc: "Carga excesiva" },
+                  { title: "Riesgo Normativo", desc: "Cumplimiento difícil" }
                 ].map((item, i) => (
-                  <div key={i} className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+                  <div key={i} className="bg-white p-3 sm:p-4 rounded-xl border border-slate-200 shadow-sm">
                     <div className="flex items-start gap-2">
                       <div className="w-2 h-2 rounded-full bg-blue-600 mt-1.5 flex-shrink-0"></div>
                       <div>
@@ -795,28 +795,28 @@
                     title: "Software Comercial",
                     icon: "shopping-cart",
                     color: "red",
-                    pros: ["Implementación rápida", "Soporte técnico incluido"],
-                    cons: ["Alto costo recurrente (licencias)", "Baja personalización institucional", "Dependencia de proveedor externo", "No se adapta a procesos UPN"],
-                    conclusion: "Alto costo • Baja personalización",
+                    pros: ["Implementación rápida", "Soporte incluido"],
+                    cons: ["Alto costo recurrente", "Baja personalización", "Difícil adaptación"],
+                    conclusion: "Alto costo • Rígido",
                     time: "6-12 meses"
                   },
                   {
                     title: "Gestión Manual",
                     icon: "file-text",
                     color: "amber",
-                    pros: ["Sin inversión inicial", "Continuidad del proceso actual"],
-                    cons: ["Procesos fragmentados e ineficientes", "Alto riesgo de errores humanos", "Sobrecarga docente continua", "Sin trazabilidad efectiva"],
-                    conclusion: "Alto riesgo • Sin mejora",
-                    time: ">3 años sin solución"
+                    pros: ["Sin inversión inicial", "Continuidad actual"],
+                    cons: ["Procesos ineficientes", "Riesgo de errores", "Sin trazabilidad"],
+                    conclusion: "Alto riesgo",
+                    time: ">3 años"
                   },
                   {
                     title: "Desarrollo Interno",
                     icon: "code-2",
                     color: "emerald",
-                    pros: ["100% personalizado a la UPN", "Control institucional total", "Escalable a futuro", "Fase 1 sin costo institucional"],
-                    cons: ["Requiere tiempo de desarrollo", "Necesita equipo técnico (Fase 2)", "Requiere condiciones institucionales"],
-                    conclusion: "Control total • Eficiencia",
-                    time: "18 meses completo"
+                    pros: ["100% Personalizado", "Control total", "Escalable"],
+                    cons: ["Tiempo desarrollo", "Requiere equipo"],
+                    conclusion: "Eficiencia Total",
+                    time: "18 meses"
                   }
                 ].map((escenario, i) => (
                   <div key={i} className={`bg-white rounded-2xl border-2 border-${escenario.color}-200 shadow-lg overflow-hidden`}>
@@ -945,21 +945,21 @@
                   <div className="h-1 w-16 lg:w-24 bg-gradient-to-r from-blue-600 to-cyan-400 rounded-full"></div>
                 </div>
 
-                {/* Scrollable Content */}
-                <div className="flex-1 px-4 lg:px-12 pb-20 lg:pb-24 overflow-y-auto content-scroll overflow-x-hidden" data-slide-id={currentSlide}>
+                {/* Scrollable Content - Padding bottom aumentado drásticamente en móvil (pb-32) para evitar menú */}
+                <div className="flex-1 px-4 lg:px-12 pb-32 lg:pb-24 overflow-y-auto content-scroll overflow-x-hidden" data-slide-id={currentSlide}>
                   {slides[currentSlide].content}
                 </div>
               </div>
             </div>
 
-            {/* Navigation Footer */}
-            <div className="absolute bottom-0 left-0 right-0 bg-white/95 backdrop-blur-md border-t border-slate-200 px-4 py-4 lg:px-8 lg:py-6 flex justify-between items-center flex-shrink-0 z-50">
+            {/* Navigation Footer - Más compacto en móvil */}
+            <div className="absolute bottom-0 left-0 right-0 bg-white/95 backdrop-blur-md border-t border-slate-200 px-3 py-3 lg:px-8 lg:py-6 flex justify-between items-center flex-shrink-0 z-50 shadow-[0_-5px_15px_-5px_rgba(0,0,0,0.1)]">
               <button
                 onClick={prevSlide}
-                className="group flex items-center gap-2 px-4 py-3 lg:px-6 bg-slate-100 hover:bg-slate-200 rounded-xl transition-all text-slate-600 hover:text-slate-800 border border-slate-200"
+                className="group flex items-center justify-center gap-2 w-12 h-12 lg:w-auto lg:h-auto lg:px-6 lg:py-3 bg-slate-100 hover:bg-slate-200 rounded-full lg:rounded-xl transition-all text-slate-600 hover:text-slate-800 border border-slate-200"
               >
-                <Icon name="chevron-left" size={20} strokeWidth={2.5} />
-                <span className="font-bold text-sm uppercase tracking-wide hidden sm:inline">Anterior</span>
+                <Icon name="chevron-left" size={24} strokeWidth={2.5} />
+                <span className="font-bold text-sm uppercase tracking-wide hidden lg:inline">Anterior</span>
               </button>
 
               <div className="hidden md:flex gap-2.5">
@@ -979,12 +979,12 @@
 
               <button
                 onClick={nextSlide}
-                className="group flex items-center gap-2 px-4 py-3 lg:px-8 accent-gradient text-white rounded-xl shadow-lg hover:shadow-xl transition-all active:scale-95"
+                className="group flex items-center justify-center gap-2 w-12 h-12 lg:w-auto lg:h-auto lg:px-8 lg:py-4 accent-gradient text-white rounded-full lg:rounded-xl shadow-lg hover:shadow-xl transition-all active:scale-95"
               >
-                <span className="font-bold text-sm uppercase tracking-wide hidden sm:inline">
+                <span className="font-bold text-sm uppercase tracking-wide hidden lg:inline">
                   {currentSlide === slides.length - 1 ? 'Reiniciar' : 'Siguiente'}
                 </span>
-                <Icon name="chevron-right" size={20} strokeWidth={2.5} />
+                <Icon name="chevron-right" size={24} strokeWidth={2.5} />
               </button>
             </div>
           </div>
