@@ -81,6 +81,21 @@
       background: #94a3b8;
     }
 
+    /* Mejora crítica para scroll en móviles */
+    .content-scroll {
+      -webkit-overflow-scrolling: touch;
+      overscroll-behavior-y: contain;
+    }
+
+    /* En móviles, permitimos que el body tenga scroll si es necesario por colapso */
+    @media (max-width: 640px) {
+      body {
+        overflow: hidden;
+        /* Mantenemos hidden para app-like feel, pero controlamos el contenedor interno */
+        background: #ffffff;
+      }
+    }
+
     .accent-gradient {
       background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
     }
@@ -882,13 +897,15 @@
       }, []);
 
       return (
-        <div className="h-screen w-screen bg-slate-100 flex items-center justify-center p-4 lg:p-8">
-          <div className="w-full max-w-[1400px] h-full max-h-[900px] bg-white rounded-2xl lg:rounded-[2.5rem] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.2)] overflow-hidden flex flex-col">
+        // En móvil: h-[100dvh] para altura real, p-0. En desktop: p-4 lg:p-8
+        <div className="relative h-[100dvh] w-screen bg-slate-100 flex items-center justify-center p-0 lg:p-8 overflow-hidden">
+          {/* En móvil: rounded-none, h-full, max-h-none. En desktop: rounded-2xl, max-h-[900px] */}
+          <div className="w-full lg:max-w-[1400px] h-full lg:h-full lg:max-h-[900px] bg-white lg:rounded-[2.5rem] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.2)] overflow-hidden flex flex-col relative">
 
             {/* Top Bar */}
-            <div className="bg-gradient-to-r from-blue-900 to-blue-700 text-white px-8 py-5 flex justify-between items-center flex-shrink-0">
-              <div className="flex items-center gap-4">
-                <img src="https://i.ibb.co/C5SB6zj4/Identidad-UPN-25-vertical-azul-fondo-blanco.png" alt="UPN Logo" className="h-16 bg-white p-2 rounded-lg shadow-lg logo-pulse" />
+            <div className="bg-gradient-to-r from-blue-900 to-blue-700 text-white px-4 py-4 lg:px-8 lg:py-5 flex justify-between items-center flex-shrink-0 z-40">
+              <div className="flex items-center gap-3 lg:gap-4">
+                <img src="https://i.ibb.co/C5SB6zj4/Identidad-UPN-25-vertical-azul-fondo-blanco.png" alt="UPN Logo" className="h-10 lg:h-16 bg-white p-1.5 lg:p-2 rounded-lg shadow-lg logo-pulse" />
                 <div className="hidden lg:block w-px h-8 bg-white/20"></div>
                 <div className="hidden lg:block">
                   <p className="text-[10px] font-bold uppercase tracking-widest opacity-60">Sistema Integral</p>
@@ -909,26 +926,27 @@
             </div>
 
             {/* Content Area */}
-            <div className="flex-1 overflow-hidden flex flex-col">
+            <div className="flex-1 overflow-hidden flex flex-col relative z-0">
               <div key={currentSlide} className="slide-transition h-full flex flex-col">
                 {/* Slide Header */}
-                <div className="px-8 lg:px-12 pt-8 pb-6 flex-shrink-0">
-                  <div className="flex items-center gap-4 mb-3">
-                    <div className="w-14 h-14 bg-blue-100 rounded-2xl flex items-center justify-center flex-shrink-0">
-                      <Icon name={slides[currentSlide].icon} size={28} className="text-blue-600" strokeWidth={2} />
+                <div className="px-4 py-4 lg:px-12 lg:pt-8 lg:pb-6 flex-shrink-0">
+                  <div className="flex items-center gap-3 lg:gap-4 mb-2 lg:mb-3">
+                    <div className="w-10 h-10 lg:w-14 lg:h-14 bg-blue-100 rounded-xl lg:rounded-2xl flex items-center justify-center flex-shrink-0">
+                      <Icon name={slides[currentSlide].icon} size={20} className="text-blue-600 lg:hidden" strokeWidth={2} />
+                      <Icon name={slides[currentSlide].icon} size={28} className="text-blue-600 hidden lg:block" strokeWidth={2} />
                     </div>
                     <div>
-                      <h1 className="text-3xl lg:text-4xl font-black text-slate-800 tracking-tight leading-tight">
+                      <h1 className="text-xl lg:text-4xl font-black text-slate-800 tracking-tight leading-tight line-clamp-2 lg:line-clamp-none">
                         {slides[currentSlide].title}
                       </h1>
-                      <p className="text-blue-600 font-bold text-xs uppercase tracking-widest mt-1">{slides[currentSlide].subtitle}</p>
+                      <p className="text-blue-600 font-bold text-[10px] lg:text-xs uppercase tracking-widest mt-0.5 lg:mt-1">{slides[currentSlide].subtitle}</p>
                     </div>
                   </div>
-                  <div className="h-1 w-24 bg-gradient-to-r from-blue-600 to-cyan-400 rounded-full"></div>
+                  <div className="h-1 w-16 lg:w-24 bg-gradient-to-r from-blue-600 to-cyan-400 rounded-full"></div>
                 </div>
 
                 {/* Scrollable Content */}
-                <div className="flex-1 px-8 lg:px-12 pb-24 overflow-y-auto content-scroll" data-slide-id={currentSlide}>
+                <div className="flex-1 px-4 lg:px-12 pb-20 lg:pb-24 overflow-y-auto content-scroll overflow-x-hidden" data-slide-id={currentSlide}>
                   {slides[currentSlide].content}
                 </div>
               </div>
