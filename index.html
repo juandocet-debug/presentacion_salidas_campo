@@ -460,23 +460,23 @@
                 ))}
               </div>
 
-              <div className="bg-slate-900 p-8 rounded-3xl text-white shadow-2xl">
-                <div className="flex flex-col lg:flex-row justify-between items-center gap-6">
-                  <div className="flex-1">
+              <div className="bg-slate-900 p-6 lg:p-8 rounded-3xl text-white shadow-2xl">
+                <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6">
+                  <div className="flex-1 w-full">
                     <p className="text-cyan-400 font-bold uppercase tracking-widest text-xs mb-2">Valor Aportado - Fase 1</p>
-                    <p className="text-5xl font-black mb-3">
-                      $300.000.000 <span className="text-2xl font-normal text-slate-400">COP</span>
+                    <p className="text-3xl sm:text-4xl lg:text-5xl font-black mb-3 break-words">
+                      $300.000.000 <span className="text-xl lg:text-2xl font-normal text-slate-400">COP</span>
                     </p>
-                    <p className="text-sm text-slate-400 leading-relaxed">
+                    <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
                       Asumido íntegramente por el proponente • Sin erogación para la universidad
                     </p>
                   </div>
-                  <div className="flex flex-col gap-3">
-                    <div className="bg-white/10 px-6 py-3 rounded-xl border border-white/20 backdrop-blur-sm flex items-center gap-2">
+                  <div className="flex flex-col sm:flex-row gap-3 w-full lg:w-auto">
+                    <div className="bg-white/10 px-4 py-3 rounded-xl border border-white/20 backdrop-blur-sm flex items-center gap-2 flex-1 justify-center lg:justify-start">
                       <Icon name="check" size={18} className="text-emerald-400" strokeWidth={3} />
                       <span className="text-sm font-bold">0% Costo UPN</span>
                     </div>
-                    <div className="bg-white/10 px-6 py-3 rounded-xl border border-white/20 backdrop-blur-sm flex items-center gap-2">
+                    <div className="bg-white/10 px-4 py-3 rounded-xl border border-white/20 backdrop-blur-sm flex items-center gap-2 flex-1 justify-center lg:justify-start">
                       <Icon name="clock" size={18} className="text-cyan-400" />
                       <span className="text-sm font-bold">Desarrollo Serio</span>
                     </div>
@@ -484,13 +484,13 @@
                 </div>
               </div>
 
-              <div className="bg-amber-50 border-l-4 border-amber-500 p-6 rounded-r-2xl">
+              <div className="bg-amber-50 border-l-4 border-amber-500 p-4 lg:p-6 rounded-r-2xl">
                 <h4 className="font-bold text-amber-900 mb-2 flex items-center gap-2 text-sm">
-                  <Icon name="alert-triangle" size={16} />
-                  Condiciones Institucionales Requeridas
+                  <Icon name="alert-triangle" size={16} className="flex-shrink-0" />
+                  Condiciones Institucionales
                 </h4>
-                <p className="text-sm text-amber-800 leading-relaxed">
-                  Descarga académica efectiva, ajustes en cargas administrativas y condiciones formales para el rol de desarrollador inicial (a concertar con Rectoría y Vicerrectoría antes del inicio).
+                <p className="text-xs sm:text-sm text-amber-800 leading-relaxed text-balance">
+                  Descarga académica efectiva, ajustes en cargas administrativas y condiciones formales para el rol de desarrollador inicial.
                 </p>
               </div>
             </div>
@@ -526,21 +526,21 @@
                       { role: "Arquitecto de Software", qty: "1", monthly: "$4.000.000", total: "$48.000.000", icon: "user-check" },
                       { role: "Desarrolladores Junior", qty: "2", monthly: "$2.500.000 c/u", total: "$60.000.000", icon: "users" }
                     ].map((item, i) => (
-                      <div key={i} className="bg-slate-50 p-5 rounded-xl border border-slate-200">
-                        <div className="flex items-start justify-between mb-3">
+                      <div key={i} className="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                        <div className="flex items-start justify-between mb-2">
                           <div className="flex items-center gap-3">
-                            <div className="w-10 h-10 bg-blue-600 text-white rounded-xl flex items-center justify-center flex-shrink-0">
-                              <Icon name={item.icon} size={20} />
+                            <div className="w-8 h-8 lg:w-10 lg:h-10 bg-blue-600 text-white rounded-xl flex items-center justify-center flex-shrink-0">
+                              <Icon name={item.icon} size={18} />
                             </div>
                             <div>
-                              <h4 className="font-bold text-slate-800">{item.role}</h4>
-                              <p className="text-xs text-slate-600">Cant: {item.qty} • {item.monthly}/mes</p>
+                              <h4 className="font-bold text-slate-800 text-sm lg:text-base">{item.role}</h4>
+                              <p className="text-[10px] lg:text-xs text-slate-600">Cant: {item.qty} • {item.monthly}/mes</p>
                             </div>
                           </div>
                         </div>
-                        <div className="flex justify-between items-center pt-3 border-t border-slate-200">
-                          <span className="text-xs font-semibold text-slate-600 uppercase">Total 12 meses</span>
-                          <span className="text-lg font-black text-blue-900">{item.total}</span>
+                        <div className="flex justify-between items-center pt-2 border-t border-slate-200">
+                          <span className="text-[10px] font-semibold text-slate-600 uppercase">Total 12 meses</span>
+                          <span className="text-sm lg:text-lg font-black text-blue-900">{item.total}</span>
                         </div>
                       </div>
                     ))}
@@ -581,9 +581,11 @@
               <div className="accent-gradient p-8 rounded-3xl text-white shadow-2xl">
                 <div className="flex flex-col md:flex-row justify-between items-center gap-6">
                   <div>
-                    <p className="text-cyan-300 font-bold uppercase tracking-widest text-xs mb-2">Valor Total Estimado del Software</p>
-                    <p className="text-5xl font-black mb-2">$408.000.000 <span className="text-2xl font-normal opacity-50">COP</span></p>
-                    <p className="text-sm text-blue-200">Fase 1 ($300M) + Fase 2 ($108M)</p>
+                    <p className="text-cyan-300 font-bold uppercase tracking-widest text-[10px] lg:text-xs mb-2">Valor Total Estimado del Software</p>
+                    <p className="text-3xl sm:text-4xl lg:text-5xl font-black mb-2 break-all sm:break-normal">
+                      $408.000.000 <span className="text-xl font-normal opacity-50 block sm:inline">COP</span>
+                    </p>
+                    <p className="text-xs sm:text-sm text-blue-200">Fase 1 ($300M) + Fase 2 ($108M)</p>
                   </div>
                   <div className="bg-white/10 backdrop-blur-sm px-8 py-4 rounded-2xl border border-white/20">
                     <Icon name="award" size={48} className="text-yellow-300" strokeWidth={1.5} />
